@@ -1,5 +1,7 @@
 const choices=['Rock','Paper','Scissors']
 const resultdiv=document.getElementById('result')
+let playerscore=document.getElementById('player-score')
+let handsdiv=document.getElementById("hands")
 function getComputerChoice() {
     const randomchoice=Math.floor(Math.random()*choices.length)
     return choices[randomchoice]
@@ -34,12 +36,11 @@ function showResult(score, playerChoice, computerChoice) {
 function onClickRPS(playerChoice) {
   const computerchoice=getComputerChoice()
   const gettingresult=getResult(playerChoice, computerchoice)
-  let playerscore=document.getElementById('player-score')
 
   playerscore.innerText=`${gettingresult+Number(playerscore.innerText)}`
 
   showResult(gettingresult, playerChoice, computerchoice)
-  let handsdiv=document.getElementById("hands")
+  
   hands.innerText=`🤖:${computerchoice}  👱:${playerChoice}`
 }
 function playGame() {
@@ -61,6 +62,7 @@ function playGame() {
 function endGame() {
   playerscore.innerText=''
   resultdiv.innerText=''
+  handsdiv.innerText=''
 }
 
 playGame()
